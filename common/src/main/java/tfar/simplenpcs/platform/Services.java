@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package tfar.simplenpcs.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import tfar.simplenpcs.Constants;
+import tfar.simplenpcs.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 

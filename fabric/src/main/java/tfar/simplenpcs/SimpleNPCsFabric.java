@@ -1,8 +1,8 @@
-package com.example.examplemod;
+package tfar.simplenpcs;
 
 import net.fabricmc.api.ModInitializer;
 
-public class ExampleMod implements ModInitializer {
+public class SimpleNPCsFabric implements ModInitializer {
     
     @Override
     public void onInitialize() {

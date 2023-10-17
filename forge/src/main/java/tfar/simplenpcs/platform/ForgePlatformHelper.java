@@ -1,6 +1,6 @@
-package com.example.examplemod.platform;
+package tfar.simplenpcs.platform;
 
-import com.example.examplemod.platform.services.IPlatformHelper;
+import tfar.simplenpcs.platform.services.IPlatformHelper;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.loading.FMLLoader;
 

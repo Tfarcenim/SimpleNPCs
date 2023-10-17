@@ -1,6 +1,6 @@
-package com.example.examplemod;
+package tfar.simplenpcs;
 
-import com.example.examplemod.platform.Services;
+import tfar.simplenpcs.platform.Services;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Items;
 
