@@ -17,7 +17,8 @@
     "entrypoints": {
         "main": [
             "tfar.simplenpcs.SimpleNPCsFabric"
-        ]
+        ],
+        "client": ["tfar.simplenpcs.client.SimpleNPCsFabricClient"]
     },
     "mixins": [
         "${mod_id}.mixins.json",
@@ -26,7 +27,7 @@
     "depends": {
         "fabricloader": ">=0.14",
         "fabric": "*",
-        "minecraft": "1.20",
+        "minecraft": ">=1.20",
         "java": ">=17"
     },
     "suggests": {
