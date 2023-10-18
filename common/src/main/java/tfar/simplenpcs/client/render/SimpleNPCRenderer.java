@@ -1,21 +1,17 @@
 package tfar.simplenpcs.client.render;
 
-import net.minecraft.Util;
-import net.minecraft.client.model.HumanoidArmorModel;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.minecraft.MinecraftProfileTexture;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.client.renderer.entity.layers.CustomHeadLayer;
-import net.minecraft.client.renderer.entity.layers.ElytraLayer;
-import net.minecraft.client.renderer.entity.layers.HumanoidArmorLayer;
-import net.minecraft.client.renderer.entity.layers.ItemInHandLayer;
+import net.minecraft.client.resources.DefaultPlayerSkin;
+import net.minecraft.core.UUIDUtil;
 import net.minecraft.resources.ResourceLocation;
-import tfar.simplenpcs.client.PlayerTextureManager;
 import tfar.simplenpcs.entity.SimpleNPCEntity;
-import tfar.simplenpcs.entity.SlimHumaniodEntity;
 
-import java.util.EnumMap;
 import java.util.Map;
 
 public abstract class SimpleNPCRenderer<T extends SimpleNPCEntity,S extends PlayerModel<T>> extends MobRenderer<T,S> {
@@ -37,6 +33,16 @@ public abstract class SimpleNPCRenderer<T extends SimpleNPCEntity,S extends Play
     public abstract ResourceLocation getDefaultTexture();
 
     ResourceLocation getPlayerTexture(SimpleNPCEntity entity) {
-        return PlayerTextureManager.getOrCreateTextureWithDefault(entity, getDefaultTexture());
+
+        Minecraft minecraft = Minecraft.getInstance();
+        GameProfile profile = entity.getGameProfile();
+
+        if (profile == null) return getDefaultTexture();
+
+        Map<MinecraftProfileTexture.Type, MinecraftProfileTexture> map = minecraft.getSkinManager().getInsecureSkinInformation(profile);
+        return map.containsKey(MinecraftProfileTexture.Type.SKIN) ? minecraft.getSkinManager()
+                .registerTexture(map.get(MinecraftProfileTexture.Type.SKIN), MinecraftProfileTexture.Type.SKIN) :
+                DefaultPlayerSkin.getDefaultSkin(UUIDUtil.getOrCreatePlayerUUID(profile));
+
     }
 }

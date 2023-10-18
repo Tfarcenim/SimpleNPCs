@@ -13,12 +13,10 @@ public class Constants {
 	public static final String MOD_NAME = "SimpleNPCs";
 	public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-	public static final EntityType<SlimHumaniodEntity> SLIM_HUMANOID = EntityType.Builder.<SlimHumaniodEntity>of((entityType, level) ->
-					new SlimHumaniodEntity(entityType, level, SlimHumaniodEntity.Variant.ALEX), MobCategory.MISC)
+	public static final EntityType<SlimHumaniodEntity> SLIM_HUMANOID = EntityType.Builder.<SlimHumaniodEntity>of(SlimHumaniodEntity::new, MobCategory.MISC)
 			.sized(0.6F, 1.8F).clientTrackingRange(32).updateInterval(2).build("slim_humanoid");
 
-	public static final EntityType<HumaniodEntity> HUMANOID = EntityType.Builder.<HumaniodEntity>of((entityType, level) ->
-					new HumaniodEntity(entityType, level, HumaniodEntity.Variant.ALEX), MobCategory.MISC)
+	public static final EntityType<HumaniodEntity> HUMANOID = EntityType.Builder.<HumaniodEntity>of(HumaniodEntity::new, MobCategory.MISC)
 			.sized(0.6F, 1.8F).clientTrackingRange(32).updateInterval(2).build("humanoid");
 
 }
